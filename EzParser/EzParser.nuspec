@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>EzParser</id>
+    <version>0.8.0</version>
+    <authors>Rene Zwanenburg</authors>
+    <owners>Rene Zwanenburg</owners>
+    <licenseUrl>https://github.com/ReneZwanenburg/EzParser/blob/master/LICENSE.md</licenseUrl>
+    <projectUrl>https://github.com/ReneZwanenburg/EzParser</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Parser combinator library</description>
+    <copyright>Copyright 2018</copyright>
+  </metadata>
+</package>
