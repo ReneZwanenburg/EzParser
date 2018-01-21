@@ -7,6 +7,15 @@ namespace EzParser
     {
         public static AstNode Parse(
             this IParser parser,
+            string input)
+        {
+            return Parse(
+                parser,
+                new Slice(input));
+        }
+
+        public static AstNode Parse(
+            this IParser parser,
             Slice input)
         {
             var result = parser.Parse(input, new Context());
