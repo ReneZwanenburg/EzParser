@@ -5,17 +5,16 @@
         public string Base { get; }
         public int StartIndex { get; }
         public int EndIndex { get; }
-        public int Length => EndIndex - StartIndex;
 
-        private string _value;
-        public string Value => _value ?? (_value = Base.Substring(StartIndex, Length));
+        public int Length => EndIndex - StartIndex;
+        
+        public string Value => Base.Substring(StartIndex, Length);
 
         public Slice(string value)
         {
             Base = value;
             StartIndex = 0;
             EndIndex = Base.Length;
-            _value = null;
         }
 
         private Slice(ref Slice value, int from, int length)
@@ -23,7 +22,6 @@
             Base = value.Base;
             StartIndex = value.StartIndex + from;
             EndIndex = value.StartIndex + from + length;
-            _value = null;
         }
 
         public Slice Between(int from, int to)

@@ -6,8 +6,8 @@ namespace EzParser
     {
         public string Type { get; }
         public Slice Match { get; }
-        public bool Success { get; }
         public IReadOnlyList<AstNode> Children { get; }
+        public bool Success { get; }
 
         public AstNode(
             string type,
