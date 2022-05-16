@@ -1,4 +1,6 @@
-﻿namespace EzParser
+﻿using static EzParser.ParserBuilder;
+
+namespace EzParser
 {
     public static class Common
     {
@@ -8,22 +10,17 @@
             string name = "Integer")
         {
             var parser = allowLeadingZero
-                ? ParserBuilder.OneOrMore(ParserBuilder.Class("0-9"))
-                : ParserBuilder.Choice(
-                    ParserBuilder.T("0"),
-                    ParserBuilder.Sequence(
-                        ParserBuilder.Class("1-9"),
-                        ParserBuilder.ZeroOrMore(ParserBuilder.Class("0-9"))
+                ? OneOrMore(Class("0-9"))
+                : Choice(
+                    T("0"),
+                    Sequence(
+                        Class("1-9"),
+                        ZeroOrMore(Class("0-9"))
                     )
                 );
 
             if (allowNegative)
-            {
-                parser = ParserBuilder.Sequence(
-                    ParserBuilder.Optional(ParserBuilder.T("-")),
-                    parser
-                );
-            }
+                parser = Sequence(Optional(T("-")), parser);
 
             return AddName(parser, name);
         }
@@ -41,19 +38,15 @@
                 null);
 
             var decimalDigitsPart = allowEmptyDecimalDigits
-                ? ParserBuilder.ZeroOrMore(ParserBuilder.Class("0-9"))
-                : ParserBuilder.OneOrMore(ParserBuilder.Class("0-9"));
+                ? ZeroOrMore(Class("0-9"))
+                : OneOrMore(Class("0-9"));
 
-            var decimalPart = ParserBuilder.Sequence(
-                ParserBuilder.T("."),
-                decimalDigitsPart);
+            var decimalPart = Sequence(T("."), decimalDigitsPart);
 
             if (allowIntegerOnly)
-                decimalPart = ParserBuilder.Optional(decimalPart);
+                decimalPart = Optional(decimalPart);
 
-            var parser = ParserBuilder.Sequence(
-                intPart,
-                decimalPart);
+            var parser = Sequence(intPart, decimalPart);
 
             return AddName(parser, name);
         }
@@ -61,15 +54,9 @@
         public static IParser Identifier(
             string name = "Identifier")
         {
-            var parser = ParserBuilder.Sequence(
-                ParserBuilder.Choice(
-                    ParserBuilder.T('_'),
-                    ParserBuilder.Letter
-                ),
-                ParserBuilder.ZeroOrMore(ParserBuilder.Choice(
-                    ParserBuilder.T('_'),
-                    ParserBuilder.LetterOrDigit
-                ))
+            var parser = Sequence(
+                Choice(T('_'), ParserBuilder.Letter),
+                ZeroOrMore(Choice(T('_'), LetterOrDigit))
             );
 
             return AddName(parser, name);
@@ -79,12 +66,9 @@
             IParser element,
             IParser delimiter)
         {
-            return ParserBuilder.Sequence(
+            return Sequence(
                 element,
-                ParserBuilder.ZeroOrMore(ParserBuilder.Sequence(
-                    delimiter,
-                    element
-                ))
+                ZeroOrMore(delimiter, element)
             );
         }
 
@@ -95,9 +79,7 @@
             if (string.IsNullOrEmpty(name))
                 return parser;
 
-            return ParserBuilder.NonTerminal(
-                name,
-                parser);
+            return NonTerminal(name, parser);
         }
     }
 }

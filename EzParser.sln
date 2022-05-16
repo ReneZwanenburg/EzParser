@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27130.2010
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32319.34
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EzParser", "EzParser\EzParser.csproj", "{3FF6DC05-EB59-4503-9C21-C777C78B2E49}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EzParser", "EzParser\EzParser.csproj", "{685BF1D0-6DE4-4C39-815D-E10788346BD2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{3FF6DC05-EB59-4503-9C21-C777C78B2E49}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3FF6DC05-EB59-4503-9C21-C777C78B2E49}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3FF6DC05-EB59-4503-9C21-C777C78B2E49}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3FF6DC05-EB59-4503-9C21-C777C78B2E49}.Release|Any CPU.Build.0 = Release|Any CPU
+		{685BF1D0-6DE4-4C39-815D-E10788346BD2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{685BF1D0-6DE4-4C39-815D-E10788346BD2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{685BF1D0-6DE4-4C39-815D-E10788346BD2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{685BF1D0-6DE4-4C39-815D-E10788346BD2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {381FBD3B-C4EC-4364-B26B-6B0DF239E5D0}
+		SolutionGuid = {85316026-86F1-49DD-B38C-86F28E4D5B86}
 	EndGlobalSection
 EndGlobal

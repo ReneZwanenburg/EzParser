@@ -24,28 +24,16 @@
             EndIndex = value.StartIndex + from + length;
         }
 
-        public Slice Between(int from, int to)
-        {
-            return this[from, to - from];
-        }
+        public Slice Between(int from, int to) => this[from, to - from];
 
-        public Slice From(int from)
-        {
-            return Between(from, Length);
-        }
+        public Slice From(int from) => Between(from, Length);
 
-        public Slice To(int to)
-        {
-            return Between(0, to);
-        }
+        public Slice To(int to) => Between(0, to);
 
         public Slice this[int from, int length] => new Slice(ref this, from, length);
 
         public char this[int index] => Base[StartIndex + index];
 
-        public static implicit operator Slice(string value)
-        {
-            return new Slice(value);
-        }
+        public static implicit operator Slice(string value) => new Slice(value);
     }
 }

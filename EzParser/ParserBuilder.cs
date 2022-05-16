@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Linq;
-using EzParser.Parser;
 
 namespace EzParser
 {
@@ -13,10 +12,7 @@ namespace EzParser
                 : new CaseInsensitiveTerminal(terminal);
         }
 
-        public static IParser T(char terminal, bool caseSensitive = true)
-        {
-            return T(terminal.ToString(), caseSensitive);
-        }
+        public static IParser T(char terminal, bool caseSensitive = true) => T(terminal.ToString(), caseSensitive);
 
         public static IParser Any { get; } = new Any();
 
@@ -27,60 +23,27 @@ namespace EzParser
                 : new Choice(options);
         }
 
-        public static IParser Lookahead(IParser parser)
-        {
-            return new Lookahead(parser);
-        }
+        public static IParser Lookahead(IParser parser) => new Lookahead(parser);
 
-        public static IParser Lookahead(params IParser[] sequence)
-        {
-            return Lookahead(Sequence(sequence));
-        }
+        public static IParser Lookahead(params IParser[] sequence) => Lookahead(Sequence(sequence));
 
-        public static IParser Not(IParser parser)
-        {
-            return new Not(parser);
-        }
+        public static IParser Not(IParser parser) => new Not(parser);
 
-        public static IParser Not(params IParser[] sequence)
-        {
-            return Not(Sequence(sequence));
-        }
+        public static IParser Not(params IParser[] sequence) => Not(Sequence(sequence));
 
-        public static IParser OneOrMore(IParser parser)
-        {
-            return new OneOrMore(parser);
-        }
+        public static IParser OneOrMore(IParser parser) => new OneOrMore(parser);
 
-        public static IParser OneOrMore(params IParser[] sequence)
-        {
-            return OneOrMore(Sequence(sequence));
-        }
+        public static IParser OneOrMore(params IParser[] sequence) => OneOrMore(Sequence(sequence));
 
-        public static IParser ZeroOrMore(IParser parser)
-        {
-            return new ZeroOrMore(parser);
-        }
+        public static IParser ZeroOrMore(IParser parser) => new ZeroOrMore(parser);
 
-        public static IParser ZeroOrMore(params IParser[] sequence)
-        {
-            return ZeroOrMore(Sequence(sequence));
-        }
+        public static IParser ZeroOrMore(params IParser[] sequence) => ZeroOrMore(Sequence(sequence));
 
-        public static IParser Optional(IParser parser)
-        {
-            return new Optional(parser);
-        }
+        public static IParser Optional(IParser parser) => new Optional(parser);
 
-        public static IParser Optional(params IParser[] sequence)
-        {
-            return Optional(Sequence(sequence));
-        }
+        public static IParser Optional(params IParser[] sequence) => Optional(Sequence(sequence));
 
-        public static IParser Range(char from, char to)
-        {
-            return new Range(from, to);
-        }
+        public static IParser Range(char from, char to) => new Range(from, to);
 
         public static IParser Letter { get; } = new Letter();
 
@@ -100,30 +63,15 @@ namespace EzParser
                 : new Sequence(elements);
         }
 
-        public static IParser Keep(IParser parser)
-        {
-            return new Keep(parser);
-        }
+        public static IParser Keep(IParser parser) => new Keep(parser);
 
-        public static IParser NonTerminal(string type, IParser parser)
-        {
-            return new NonTerminal(type, parser);
-        }
+        public static IParser NonTerminal(string type, IParser parser) => new NonTerminal(type, parser);
 
-        public static IParser NonTerminal(string type, params IParser[] sequence)
-        {
-            return NonTerminal(type, Sequence(sequence));
-        }
+        public static IParser NonTerminal(string type, params IParser[] sequence) => NonTerminal(type, Sequence(sequence));
 
-        public static IParser Decimate(IParser parser)
-        {
-            return new Decimate(parser);
-        }
+        public static IParser Decimate(IParser parser) => new Decimate(parser);
 
-        public static IParser ForwardReference(Func<IParser> reference)
-        {
-            return new ForwardReference(reference);
-        }
+        public static IParser ForwardReference(Func<IParser> reference) => new ForwardReference(reference);
 
         private static readonly IParser ClassDefinitionParser = 
             OneOrMore(Choice(
